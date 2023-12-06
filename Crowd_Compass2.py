@@ -82,9 +82,9 @@ def user():
     # Display information without edit functionality
     if "locations" in data:
         for num, location_data in data["locations"].items():
-            st.subheader(f"Location #{num}")
-            st.write(f"Capacity of Location #{num}: {location_data['capacity']}")
-            st.write(f"Count of Location #{num}: {location_data['count']}")
+            t.subheader(f"Location #{num}")
+            st.write(f"Capacity of {new_location}: {location_data['capacity']}")
+            st.write(f"Count of {new_location}: {location_data['count']}")
             st.progress(int(location_data['crowdedness']))
             st.markdown(
                 """
