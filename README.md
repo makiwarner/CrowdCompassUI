@@ -1,4 +1,4 @@
-# CrowdCompassUI
+# CrowdCompassUI 🧭 
 # Overview
 Crowd Compass is a web application designed to help users assess the crowdedness level at different restaurants, aiding them in making informed decisions about their dining plans. The user-friendly interface displays a bar chart representing the crowdedness level, calculated based on the current and maximum capcity of each restaurant. Additionally, restaurant administrators can log in to edit the live and maximum capacities for their establishments.
 
