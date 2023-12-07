@@ -6,7 +6,12 @@ Crowd Compass is a web application designed to help users assess the crowdedness
 Ensure you have the following installed:
 
 Python 3.x
-Streamlit library 
+
+Streamlit library
+
+Json library
+
+Python Library
 
 # Initializaiton and set up
 Take the project files out of the repository by performing a Clone the Repository.
