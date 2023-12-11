@@ -38,8 +38,6 @@ def admin():
         return score
 
     # Streamlit app GUI
-    st.title("👥Crowd Compass🧭")
-
     #Add location, button, capacity
 
     if "restaurant_num" not in st.session_state:
