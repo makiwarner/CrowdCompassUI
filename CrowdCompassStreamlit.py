@@ -1,5 +1,4 @@
 import streamlit as st
-import pandas as pd
 import json
 
 def read_data():
@@ -28,7 +27,6 @@ def login_page():
         st.button("Log In")
         return role, None
 
-
 def admin():
     data = read_data()  # Read existing data
 
@@ -36,6 +34,37 @@ def admin():
     def crowdedness_score(count, capacity):
         score = (count / capacity)*100 if capacity > 0 else 0
         return score
+
+        # Display information that was previously stored
+    # only "count" has edit functionality
+    if "locations" in data:
+        for num, location_data in data["locations"].items():
+            st.subheader(f"Location #{num}")
+            st.write(f"Capacity of {location_data['name']}: {location_data['capacity']}")
+
+            # Allow editing only for count
+            count_key = f"count_{num}"  # Unique key for count input
+            new_count = st.number_input(f" Count of {location_data['name']}", value=location_data['count'], min_value=0, key=count_key)
+
+            # Create an empty space for the progress bar
+            progress_bar_container = st.empty()
+
+            # Update the progress bar based on the updated count and existing capacity
+            progress_bar_container.progress(int(crowdedness_score(new_count, location_data['capacity'])))
+
+            # Save the updated count to be used by the user view
+            data["locations"][num]["count"] = new_count
+            data["locations"][num]["crowdedness"] = crowdedness_score(new_count, location_data['capacity'])
+
+            st.markdown(
+                """
+                <style>
+                    .stProgress > div > div > div > div {
+                        background-image: linear-gradient(to right, #ff0026, #27ab27);
+                    }
+                </style>""",
+                unsafe_allow_html=True,
+            )
 
     # Streamlit app GUI
     #Add location, button, capacity
